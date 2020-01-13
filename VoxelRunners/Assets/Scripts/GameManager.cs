@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     public float objSpeed;
     static public float _objSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,5 +21,11 @@ public class GameManager : MonoBehaviour
     {
         _canMove = canMove;
         _objSpeed = objSpeed;
+    }
+
+
+    public void HitHazard() {
+        canMove = false;
+        _canMove = false;
     }
 }
