@@ -8,6 +8,12 @@ public class PlayerController : MonoBehaviour {
 
     public Rigidbody theRB;
 
+    public float jumpForce;
+
+    public Transform mdlHolder;
+    public LayerMask whatIsGround;
+    public bool onGround;
+
     // Start is called before the first frame update
     void Start() {
 
@@ -15,8 +21,16 @@ public class PlayerController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        Vector3 curPos = transform.position;
-        //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + (moveSpeed * Time.deltaTime));
+        if (theGM.canMove) {
+
+            onGround = Physics.OverlapSphere(mdlHolder.position,0.2f,whatIsGround).Length > 0;
+
+            if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) && onGround) {
+                //make player jump
+                theRB.velocity = new Vector3(0f, jumpForce, 0f);
+            }
+        }
+
     }
 
     public void OnTriggerEnter(Collider other) {
@@ -26,9 +40,11 @@ public class PlayerController : MonoBehaviour {
 
             theGM.HitHazard();
 
-            theRB.isKinematic = false;
+            //theRB.isKinematic = false;
 
-            theRB.velocity = new Vector3(Random.Range(GameManager._objSpeed / 2f, -GameManager._objSpeed / 2f), 2.5f, -(GameManager._objSpeed/2f));
+            theRB.constraints = RigidbodyConstraints.None;
+
+            theRB.velocity = new Vector3(Random.Range(GameManager._objSpeed / 2f, -GameManager._objSpeed / 2f), 2.5f, -GameManager._objSpeed / 2f);
         }
 
     }
