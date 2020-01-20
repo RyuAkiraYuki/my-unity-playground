@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour {
     public LayerMask whatIsGround;
     public bool onGround;
 
+    public Animator anim;
+
     // Start is called before the first frame update
     void Start() {
 
@@ -31,6 +33,10 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
+
+        //animations transitioning
+        anim.SetBool("isWalking", theGM.canMove);
+        anim.SetBool("onGround", onGround);
     }
 
     public void OnTriggerEnter(Collider other) {
