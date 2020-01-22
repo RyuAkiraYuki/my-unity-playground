@@ -25,7 +25,7 @@ public class HazardGen : MonoBehaviour {
                 int chosenHazard = Random.Range(0, hazards.Length);
                 Instantiate(hazards[chosenHazard], transform.position, Quaternion.Euler(transform.rotation.eulerAngles.x, Random.Range(-45f, 45f), transform.rotation.eulerAngles.z));
 
-                hazardGenCounter = Random.Range(timeBetweenHazards * 0.25f, timeBetweenHazards * 1.75f);//timeBetweenHazards;
+                hazardGenCounter = Random.Range(timeBetweenHazards * 0.5f, timeBetweenHazards * 1.5f);//timeBetweenHazards;
             }
         }
 
