@@ -12,11 +12,14 @@ public class GameManager : MonoBehaviour {
     public int coinsCount;
 
     private bool coinHitThisFrame;
+    private bool gameStarted;
 
     // Start is called before the first frame update
     void Start() {
-
-        coinsCount = PlayerPrefs.GetInt("CoinsCollected");
+        if (PlayerPrefs.HasKey("CoinsCollected")) {
+            coinsCount = PlayerPrefs.GetInt("CoinsCollected");
+        }
+        
 
     }
 
@@ -24,6 +27,14 @@ public class GameManager : MonoBehaviour {
     void Update() {
         _canMove = canMove;
         _objSpeed = objSpeed;
+
+
+        if (!gameStarted && (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))) {
+            canMove = true;
+            _canMove = true;
+
+            gameStarted = true;
+        }
 
         coinHitThisFrame = false;
     }
