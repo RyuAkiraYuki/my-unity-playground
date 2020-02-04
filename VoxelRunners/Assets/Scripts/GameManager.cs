@@ -14,13 +14,21 @@ public class GameManager : MonoBehaviour {
     private bool coinHitThisFrame;
     private bool gameStarted;
 
+
+
+    //speeding up
+
+    public float timeToIncSpeed;
+    private float incSpeedCounter;
+    public float speedMultiplier;
+
     // Start is called before the first frame update
     void Start() {
         if (PlayerPrefs.HasKey("CoinsCollected")) {
             coinsCount = PlayerPrefs.GetInt("CoinsCollected");
         }
-        
 
+        incSpeedCounter = timeToIncSpeed;
     }
 
     // Update is called once per frame
@@ -34,6 +42,15 @@ public class GameManager : MonoBehaviour {
             _canMove = true;
 
             gameStarted = true;
+        }
+
+        if (canMove) {
+            incSpeedCounter -= Time.deltaTime;
+            if (incSpeedCounter <= 0) {
+                incSpeedCounter = timeToIncSpeed;
+
+                objSpeed = objSpeed * speedMultiplier;
+            }
         }
 
         coinHitThisFrame = false;
