@@ -1381,6 +1381,7 @@ MonoBehaviour:
   - {fileID: 2796834187437635112, guid: d217b0b055ead6d479e133b2a921f952, type: 3}
   minPoint: {fileID: 718750001}
   maxPoint: {fileID: 1773196396}
+  theGM: {fileID: 2011643216}
 --- !u!1001 &420254427
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2536,6 +2537,7 @@ MonoBehaviour:
   - {fileID: 2796834187437635112, guid: d217b0b055ead6d479e133b2a921f952, type: 3}
   minPoint: {fileID: 520381985}
   maxPoint: {fileID: 535713953}
+  theGM: {fileID: 2011643216}
 --- !u!4 &655269840
 Transform:
   m_ObjectHideFlags: 0
@@ -2953,6 +2955,7 @@ MonoBehaviour:
   - {fileID: 4439671494007838629, guid: ed538e1ad6fee3540aa5bde60b88c9e6, type: 3}
   - {fileID: 8064540401181841787, guid: d4dce3c737aaa804290ed6cb39c2c648, type: 3}
   timeBetweenHazards: 2
+  theGM: {fileID: 2011643216}
 --- !u!4 &723296402
 Transform:
   m_ObjectHideFlags: 0
@@ -7505,6 +7508,10 @@ MonoBehaviour:
   canMove: 0
   objSpeed: 10
   coinsCount: 0
+  timeToIncSpeed: 13
+  speedMultiplier: 1
+  acceleration: 1.1
+  speedIncAmount: 1.5
 --- !u!4 &2011643217
 Transform:
   m_ObjectHideFlags: 0

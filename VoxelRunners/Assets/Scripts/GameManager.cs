@@ -21,6 +21,12 @@ public class GameManager : MonoBehaviour {
     public float timeToIncSpeed;
     private float incSpeedCounter;
     public float speedMultiplier;
+    private float targetSpeedMuitiplier;
+    public float acceleration;
+    private float accelerationStore;
+    public float speedIncAmount;
+    private float worldSpeedStore;
+
 
     // Start is called before the first frame update
     void Start() {
@@ -29,6 +35,9 @@ public class GameManager : MonoBehaviour {
         }
 
         incSpeedCounter = timeToIncSpeed;
+        targetSpeedMuitiplier = speedMultiplier;
+        worldSpeedStore = objSpeed;
+        accelerationStore = acceleration;
     }
 
     // Update is called once per frame
@@ -49,8 +58,16 @@ public class GameManager : MonoBehaviour {
             if (incSpeedCounter <= 0) {
                 incSpeedCounter = timeToIncSpeed;
 
-                objSpeed = objSpeed * speedMultiplier;
+                //objSpeed = objSpeed * speedMultiplier;
+
+                targetSpeedMuitiplier = targetSpeedMuitiplier * speedIncAmount;
+
+                timeToIncSpeed = timeToIncSpeed * 0.97f;
             }
+
+            speedMultiplier = Mathf.MoveTowards(speedMultiplier, targetSpeedMuitiplier, acceleration * Time.deltaTime);
+            acceleration = accelerationStore * speedMultiplier;
+            objSpeed = worldSpeedStore * speedMultiplier;
         }
 
         coinHitThisFrame = false;

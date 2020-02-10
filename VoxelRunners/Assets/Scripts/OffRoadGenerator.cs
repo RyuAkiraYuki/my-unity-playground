@@ -13,6 +13,8 @@ public class OffRoadGenerator : MonoBehaviour {
     public Transform minPoint;
     public Transform maxPoint;
 
+    public GameManager theGM;
+
     // Start is called before the first frame update
     void Start() {
 
@@ -20,7 +22,7 @@ public class OffRoadGenerator : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (GameManager._canMove) {
+        if (theGM.canMove) {
             objGenCounter -= Time.deltaTime;
 
             if (objGenCounter <= 0) {
@@ -34,6 +36,8 @@ public class OffRoadGenerator : MonoBehaviour {
                 Instantiate(sideObjects[chosenObj], getPoint, Quaternion.Euler(transform.rotation.eulerAngles.x, Random.Range(-45f, 45f), transform.rotation.eulerAngles.z));
 
                 objGenCounter = Random.Range(timeBetweenObjects * 0.25f, timeBetweenObjects * 1.75f);//timeBetweenHazards;
+
+                objGenCounter = objGenCounter / theGM.speedMultiplier;
             }
         }
     }
