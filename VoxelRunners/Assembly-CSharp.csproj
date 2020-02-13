@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\CoinGeneration.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\HazardGen.cs" />
+    <Compile Include="Assets\Scripts\MMenu.cs" />
     <Compile Include="Assets\Scripts\ObjectMover.cs" />
     <Compile Include="Assets\Scripts\OffRoadGenerator.cs" />
     <Compile Include="Assets\Scripts\PathDetruction.cs" />
