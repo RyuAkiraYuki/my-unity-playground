@@ -3808,7 +3808,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &816681574
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9284,6 +9284,10 @@ MonoBehaviour:
   tapMessage: {fileID: 1760898060}
   coinsText: {fileID: 1955044160}
   distanceText: {fileID: 1689802222}
+  stuckScreen: {fileID: 816681573}
+  stuckScreenCoins: {fileID: 710685519}
+  stuckScreenDistance: {fileID: 895181099}
+  stuckScreenDelay: 0
 --- !u!4 &2011643217
 Transform:
   m_ObjectHideFlags: 0

@@ -34,6 +34,14 @@ public class GameManager : MonoBehaviour {
     public Text coinsText;
     public Text distanceText;
 
+
+    //game stuck screen variables
+    public GameObject stuckScreen;
+    public Text stuckScreenCoins;
+    public Text stuckScreenDistance;
+    public float stuckScreenDelay;
+
+
     // Start is called before the first frame update
     void Start() {
         if (PlayerPrefs.HasKey("CoinsCollected")) {
@@ -100,6 +108,11 @@ public class GameManager : MonoBehaviour {
         _canMove = false;
 
         PlayerPrefs.SetInt("CoinsCollected", coinsCount);
+
+        stuckScreen.SetActive(true);
+        stuckScreenCoins.text = coinsCount + " coins!";
+        stuckScreenDistance.text = Mathf.Floor(distanceCovered) + "m";
+
     }
 
     public void AddCoin() {
