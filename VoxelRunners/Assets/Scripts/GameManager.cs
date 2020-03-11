@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     public bool canMove;
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour {
 
     private bool coinHitThisFrame;
     private bool gameStarted;
+    public string mainMenuName;
+    public PlayerController thePlayer;
 
 
 
@@ -35,11 +38,15 @@ public class GameManager : MonoBehaviour {
     public Text distanceText;
 
 
-    //game stuck screen variables
+    //game stuck panel 
     public GameObject stuckScreen;
     public Text stuckScreenCoins;
     public Text stuckScreenDistance;
     public float stuckScreenDelay;
+    
+
+    //coins prompt panel 
+    public GameObject coinPromptPanel;
 
 
     // Start is called before the first frame update
@@ -109,10 +116,17 @@ public class GameManager : MonoBehaviour {
 
         PlayerPrefs.SetInt("CoinsCollected", coinsCount);
 
-        stuckScreen.SetActive(true);
+        //stuckScreen.SetActive(true);
         stuckScreenCoins.text = coinsCount + " coins!";
         stuckScreenDistance.text = Mathf.Floor(distanceCovered) + "m";
 
+        StartCoroutine("ShowStuckScreen");
+    }
+
+
+    public IEnumerator ShowStuckScreen() {
+        yield return new WaitForSeconds(stuckScreenDelay);
+        stuckScreen.SetActive(true);
     }
 
     public void AddCoin() {
@@ -123,5 +137,40 @@ public class GameManager : MonoBehaviour {
             coinsText.text = "Coins: " + coinsCount;
         }
 
+    }
+
+    public void ContinueGame() {
+        if(coinsCount < 100) {
+            coinPromptPanel.SetActive(true);
+        } else {
+            coinsCount -= 100;
+            //PlayerPrefs.SetInt("CoinsCollected", coinsCount);
+
+            canMove = true;
+            _canMove = true;
+
+            thePlayer.ResetPlayer();
+
+
+            stuckScreen.SetActive(false);
+        }
+    }
+
+    public void Restart() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    
+
+    public void MainMenu() {
+        SceneManager.LoadScene(mainMenuName);
+    }
+
+    public void GetCoins() {
+
+    }
+
+    public void CloseCoinPrompt() {
+        coinPromptPanel.SetActive(false);
     }
 }
