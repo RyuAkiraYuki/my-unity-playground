@@ -48,6 +48,9 @@ public class GameManager : MonoBehaviour {
     //coins prompt panel 
     public GameObject coinPromptPanel;
 
+    //pause panel
+    public GameObject pausePanel;
+
 
     // Start is called before the first frame update
     void Start() {
@@ -164,6 +167,8 @@ public class GameManager : MonoBehaviour {
 
     public void MainMenu() {
         SceneManager.LoadScene(mainMenuName);
+
+        Time.timeScale = 1f;
     }
 
     public void GetCoins() {
@@ -172,5 +177,21 @@ public class GameManager : MonoBehaviour {
 
     public void CloseCoinPrompt() {
         coinPromptPanel.SetActive(false);
+    }
+
+    public void PauseGame() {
+        if(Time.timeScale == 1f) {
+            pausePanel.SetActive(true);
+            Time.timeScale = 0f;
+        } else {
+            pausePanel.SetActive(false);
+            Time.timeScale = 1f;
+        }
+        
+    }
+
+    public void ResumeGame() {
+        pausePanel.SetActive(false);
+        Time.timeScale = 1f;
     }
 }
