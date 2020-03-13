@@ -16,9 +16,16 @@ public class PlayerController : MonoBehaviour {
 
     public Animator anim;
 
+    private Vector3 startPosition;
+    private Quaternion startRotation;
+
+    public float invincibleTime;
+    private float invincibleTimer;
+
     // Start is called before the first frame update
     void Start() {
-
+        startPosition = transform.position;
+        startRotation = transform.rotation;
     }
 
     // Update is called once per frame
@@ -33,6 +40,10 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
+        //control invincibility
+        if(invincibleTimer > 0) {
+            invincibleTimer -= Time.deltaTime;
+        }
 
         //animations transitioning
         anim.SetBool("isWalking", theGM.canMove);
@@ -42,15 +53,19 @@ public class PlayerController : MonoBehaviour {
     public void OnTriggerEnter(Collider other) {
 
         if (other.tag == "Hazards") {
-            Debug.Log("Hit a hazard!");
 
-            theGM.HitHazard();
+            if(invincibleTimer <= 0) {
+                Debug.Log("Hit a hazard!");
 
-            //theRB.isKinematic = false;
+                theGM.HitHazard();
 
-            theRB.constraints = RigidbodyConstraints.None;
+                //theRB.isKinematic = false;
 
-            theRB.velocity = new Vector3(Random.Range(GameManager._objSpeed / 2f, -GameManager._objSpeed / 2f), 2.5f, -GameManager._objSpeed / 2f);
+                theRB.constraints = RigidbodyConstraints.None;
+
+                theRB.velocity = new Vector3(Random.Range(GameManager._objSpeed / 2f, -GameManager._objSpeed / 2f), 2.5f, -GameManager._objSpeed / 2f);
+            }
+            
         }
 
         if(other.tag == "Coins") {
@@ -58,5 +73,13 @@ public class PlayerController : MonoBehaviour {
             Destroy(other.gameObject);
         }
 
+    }
+
+    public void ResetPlayer() {
+        theRB.constraints = RigidbodyConstraints.FreezeRotation;
+        transform.rotation = startRotation;
+        transform.position = startPosition;
+
+        invincibleTimer = invincibleTime;
     }
 }

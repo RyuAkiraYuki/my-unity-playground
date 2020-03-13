@@ -31,6 +31,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
     - UnityEngine.UI.Outline
+    - UnityEngine.UI.Shadow
     - UnityEngine.UI.Text
   sceneClasses:
     Assets/Scenes/MainGame.unity:
@@ -71,24 +72,44 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
+      Script: {instanceID: 11156}
+    - Class: 114
+      Script: {instanceID: 11312}
+    - Class: 114
+      Script: {instanceID: 11352}
+    - Class: 114
       Script: {instanceID: 11454}
     - Class: 114
       Script: {instanceID: 11514}
     - Class: 114
+      Script: {instanceID: 11672}
+    - Class: 114
       Script: {instanceID: 11730}
     - Class: 114
+      Script: {instanceID: 11742}
+    - Class: 114
       Script: {instanceID: 11824}
+    - Class: 114
+      Script: {instanceID: 12120}
     - Class: 114
       Script: {instanceID: 12284}
     - Class: 114
       Script: {instanceID: 12412}
+    - Class: 114
+      Script: {instanceID: 12598}
     - Class: 114
       Script: {instanceID: 12622}
     - Class: 114
       Script: {instanceID: 12686}
     - Class: 114
       Script: {instanceID: 12718}
+    - Class: 114
+      Script: {instanceID: 12892}
+    - Class: 114
+      Script: {instanceID: 12952}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
       Script: {instanceID: 0}
     - Class: 135
       Script: {instanceID: 0}
@@ -97,6 +118,14 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
       Script: {instanceID: 0}
     Assets/Scenes/MainMenu.unity:
     - Class: 1
@@ -440,7 +469,7 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 5d064bb32ca4fb1a5fd299fed3553b73
+      Hash: 3b670145e602110b3ec214dd91913a4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -524,7 +553,7 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
-      Hash: 961261afe7cf8da3312c7bde1e74d6aa
+      Hash: 5d0fa7d95f7ee3e26efff875440f4eae
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
