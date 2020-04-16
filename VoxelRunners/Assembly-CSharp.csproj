@@ -96,6 +96,9 @@
     <Reference Include="Unity.Rider.Editor">
       <HintPath>C:/GameDev/my-unity-playground/VoxelRunners/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>C:/GameDev/my-unity-playground/VoxelRunners/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/GameDev/my-unity-playground/VoxelRunners/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>

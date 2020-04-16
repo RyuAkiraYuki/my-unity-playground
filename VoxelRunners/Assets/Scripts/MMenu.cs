@@ -159,6 +159,13 @@ public class MMenu : MonoBehaviour {
     }
 
 
+    public void PlayUsingCurrentCharacter() {
+        PlayerPrefs.SetString("SelectedCharacter", theCharacters[currenChar].name);
+
+        PlayGeme();
+    }
+
+
     public void ResetCharacters() {
         for (int i = 1; i < theCharacters.Length; i++) {
             PlayerPrefs.SetInt(theCharacters[i].name, 0);
