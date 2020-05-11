@@ -9,12 +9,12 @@ public class PathDetruction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        zPosition = transform.position.z;
     }
 
     // Update is called once per frame
     void Update()
     {
-        zPosition = transform.position.z;
+        
     }
 }

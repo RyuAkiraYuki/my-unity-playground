@@ -51,6 +51,9 @@ public class GameManager : MonoBehaviour {
     //pause panel
     public GameObject pausePanel;
 
+    public GameObject[] characterModels;
+    public GameObject defaultChar;
+
 
     // Start is called before the first frame update
     void Start() {
@@ -68,6 +71,19 @@ public class GameManager : MonoBehaviour {
         //UI
         coinsText.text = "Coins: " + coinsCount;
         distanceText.text = "Distance: " + Mathf.Floor(distanceCovered) + "m";
+
+        Debug.Log(PlayerPrefs.GetString("SelectedCharacter"));
+        Debug.Log(characterModels.Length);
+        //load the correct model for character
+        for (int i = 0; i < characterModels.Length; i++) {
+            
+            if(characterModels[i].name == PlayerPrefs.GetString("SelectedCharacter")) {
+                GameObject clone = Instantiate(characterModels[i],thePlayer.mdlHolder.position,thePlayer.mdlHolder.rotation);
+                clone.transform.parent = thePlayer.mdlHolder;
+                Destroy(clone.GetComponent<Rigidbody>());
+                defaultChar.SetActive(false);
+            }
+        };
     }
 
     // Update is called once per frame
